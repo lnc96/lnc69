@@ -1,0 +1,12 @@
+server:
+  port: 7001
+
+eureka:
+  instance:
+    hostname: lnc7001.com
+  client:
+    service-url:
+      defaultZone: http://lnc7001.com:7001/eureka/
+    fetch-registry: false
+    register-with-eureka: false
+

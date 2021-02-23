@@ -1,0 +1,27 @@
+server:
+  port: 8002
+
+spring:
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+  application:
+    name: myconsumer
+  main: #允许多个feign调用相同的服务接口
+    allow-bean-definition-overriding: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://lnc7001.com:7001/eureka
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 600000
+  hystrix:
+    enabled: true
+

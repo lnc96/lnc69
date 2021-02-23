@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="myconsumer" />
+        <module name="myprovider" />
+        <module name="myeureka" />
+        <module name="myprovider2" />
+        <module name="mycommon" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mycommon" target="1.8" />
+      <module name="myconsumer" target="1.8" />
+      <module name="myeureka" target="1.8" />
+      <module name="myexam" target="1.8" />
+      <module name="myprovider" target="1.8" />
+      <module name="myprovider2" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mycommon" options="-parameters" />
+      <module name="myconsumer" options="-parameters" />
+      <module name="myeureka" options="-parameters" />
+      <module name="myprovider" options="-parameters" />
+      <module name="myprovider2" options="-parameters" />
+    </option>
+  </component>
+</project>

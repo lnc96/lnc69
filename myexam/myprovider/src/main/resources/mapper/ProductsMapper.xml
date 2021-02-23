@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kgc.mapper.ProductsMapper">
+    <select id="getAllProducts" resultType="com.kgc.pojo.Products">
+        SELECT products.*,qualities.score
+        FROM qualities INNER JOIN  products
+        ON products.id=qualities.productId
+        <where>
+
+            <if test="productName!=null and productName!=''">
+                and productName like concat('%',#{productName},'%')
+            </if>
+        </where>
+        order by productDate desc
+        limit #{from},#{pageSize}
+    </select>
+
+    <select id="getcount" resultType="int">
+        SELECT count(*)
+        FROM qualities INNER JOIN  products
+        ON products.id=qualities.productId
+        <where>
+
+            <if test="productName!=null and productName!=''">
+                and productName like concat('%',#{productName},'%')
+            </if>
+        </where>
+    </select>
+
+<!--    public int add(Products products);-->
+    <insert id="add" parameterType="com.kgc.pojo.Products">
+        INSERT INTO products VALUES(null, #{productName}, #{productDate}, #{productSum}, #{productDesc}, #{productPrice});
+    </insert>
+
+<!--    public Products getProductsById(Integer id);-->
+    <select id="getProductsById" resultType="com.kgc.pojo.Products" parameterType="Integer">
+        SELECT products.*,qualities.score
+        FROM qualities INNER JOIN  products
+        ON products.id=qualities.productId
+        where products.id=#{id}
+    </select>
+
+<!--    public int update(Products products);-->
+    <update id="update" parameterType="com.kgc.pojo.Products">
+        UPDATE products
+        <set>
+            <if test="productName!=null and productName!=''">
+                productName = #{productName} ,
+            </if>
+            <if test="productSum!=null">
+                productSum = #{productSum} ,
+            </if>
+            <if test="productDesc!=null and productDesc!=''">
+                productDesc = #{productDesc} ,
+            </if>
+            <if test="productPrice!=null">
+                productPrice = #{productPrice} ,
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+</mapper>
