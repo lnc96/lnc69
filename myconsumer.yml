@@ -1,0 +1,10 @@
+
+server:
+  port: 8003
+eureka:
+  client:
+    service-url:
+      defaultZone: http://lnc7001.com:7001/eureka/
+  instance:
+    instance-id: payment8002
+    prefer-ip-address: true  # 访问路径可以显示ip
